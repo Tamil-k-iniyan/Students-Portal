@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>🎓 College Portal</h2>
+    <a href="#"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+    <a href="#"><i class="fas fa-project-diagram"></i> <span>Projects</span></a>
+    <a href="#"><i class="fas fa-users"></i> <span>Teams</span></a>
+    <a href="#"><i class="fas fa-chart-bar"></i> <span>Reports</span></a>
+    <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+</div>
+
+<div class="main">
+    <div class="navbar">
+        <h2><i class="fas fa-smile-wink"></i> Welcome, {{ name }}</h2>
+        <!-- optional logout in navbar, but we already have sidebar -->
+    </div>
+
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-message {{ category }}">
+                    <i class="fas fa-info-circle"></i> {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
