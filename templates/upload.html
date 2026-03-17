@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Upload Project File</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    Team ID:
+    <input type="text" name="team_id"><br><br>
+
+    Select File:
+    <input type="file" name="file"><br><br>
+
+    <button type="submit">Upload</button>
+</form>
+
+<p>{{ message }}</p>
+
+{% endblock %}
+
+<h2>Upload File</h2>
+
+<form method="post" enctype="multipart/form-data">
+{% csrf_token %}
+
+Team ID:
+<input type="text" name="team_id"><br><br>
+
+Select File:
+<input type="file" name="file"><br><br>
+
+<button type="submit">Upload</button>
+</form>
+
+<p>{{ message }}</p>
